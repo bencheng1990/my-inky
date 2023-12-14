@@ -4,7 +4,7 @@ from image import display
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
 
     if request.method == 'GET':
