@@ -1,33 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<script>
-function displaySelectedImage(event, elementId) {
-    const selectedImage = document.getElementById(elementId);
-    const fileInput = event.target;
-
-    if (fileInput.files && fileInput.files[0]) {
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-            selectedImage.src = e.target.result;
-        };
-
-        reader.readAsDataURL(fileInput.files[0]);
-    }
-}
-</script>
 <head>
-  <title>Inky Impression</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Inky Impression</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="static/utilities.js"></script>
+
 </head>
 
 <body>
 
 <div class="jumbotron text-center">
-  <h1>Inky Photo Frame</h1> <br>
+    <h1>Inky Photo Frame</h1> <br>
     <h4>❤️ Choose a photo to display ❤️ </h4> <br>
 </div>
 
@@ -35,17 +21,20 @@ function displaySelectedImage(event, elementId) {
 
     <div class="mb-4 d-flex justify-content-center ratio ratio-16x9">
         <img id="selectedImage" src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
-        alt="example placeholder"/>
+             alt="example placeholder"/>
     </div>
 
-    <div class="d-flex justify-content-center d-grid gap-3">
+    <div class="d-flex justify-content-center">
 
-        <div class="btn btn-primary btn-rounded">
-            <label class="form-label text-white m-1" for="customFile1">Choose file</label>
-            <input type="file" class="form-control d-none" id="customFile1" onchange="displaySelectedImage(event, 'selectedImage')" />
-        </div>
+        <form action="http://localhost:5000/" method="POST" enctype="multipart/form-data" class="row g-3">
 
-        <button type="button" class="btn btn-outline-primary">Submit</button>
+            <label for="formFileLg" class="form-label"></label>
+            <input type="file" id="formFileLg" name="file" onchange="displaySelectedImage(event, 'selectedImage')"/>
+
+            <input type="submit" id="btn_submit" class="btn btn-outline-primary" onclick="showSending('btn_submit')" value="Send to Inky"/>
+
+        </form>
+
     </div>
 
 </div>
