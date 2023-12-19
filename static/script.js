@@ -1,5 +1,5 @@
-function displaySelectedImage(event, elementId) {
-    const selectedImage = document.getElementById(elementId);
+function displaySelectedImage(event) {
+    const selectedImage = document.getElementById("selectedImage");
     const fileInput = event.target;
 
     if (fileInput.files && fileInput.files[0]) {
