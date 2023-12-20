@@ -13,7 +13,7 @@ function displaySelectedImage(event) {
     }
 }
 
-function showSending(elementId) {
-  const button= document.getElementById(elementId);
+function showSending() {
+  const button= document.getElementById("btnSubmit");
   button.value = 'Sending to Inky..';
 }
